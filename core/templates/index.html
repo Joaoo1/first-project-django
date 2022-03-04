@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,9 +7,32 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <h1>Teste</h1>
-    <p>{{curso}}</p>
+    <img src="{% static 'images/logo.png' %}"/>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td><a href="{% url 'product' product.id %}">{{ product.name }}</a></td>
+                    <td>{{ product.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </tbody>
+    </table>
+
+    <button onclick="test()">Teste</button>
+
+    <script type="text/javascript" src="{% static 'js/script.js'%}"></script>
 </body>
 </html>
